@@ -1,12 +1,14 @@
 Sistema de Controle Financeiro SOP
+
 Este projeto é um sistema de controle financeiro para a SOP (Superintendência de Obras Públicas) que gerencia três principais entidades empresariais: Despesas, Compromissos e Pagamentos.
 
 Estrutura do Projeto
-O projeto é dividido em dois componentes principais:
+O projeto é dividido em dois componentes principais:   
 
 frontend: aplicativo Next.js com Redux para gerenciamento de estado
 backend: aplicativo SpringBoot com JPA para acesso ao banco de dados
 Entidades de Negócio
+
 Despesa
 Número do protocolo (único)
 Tipo de despesa
@@ -29,6 +31,7 @@ Valor do pagamento
 Observação
 Associado a um compromisso
 Regras de Negócio
+
 A soma dos valores de compromisso para uma despesa não deve exceder o valor da despesa
 A soma dos valores de pagamento para um compromisso não deve exceder o valor do compromisso
 A exclusão de um compromisso com pagamentos associados não é permitida
