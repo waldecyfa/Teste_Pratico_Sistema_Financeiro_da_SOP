@@ -6,7 +6,7 @@ Estrutura do Projeto
 O projeto é dividido em dois componentes principais:   
 
 frontend: aplicativo Next.js com Redux para gerenciamento de estado
-backend: aplicativo SpringBoot com JPA para acesso ao banco de dados
+backend: aplicativo SpringBoot com JPA para acesso ao banco de dados    
 Entidades de Negócio
 
 Despesa
