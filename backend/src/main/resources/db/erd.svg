@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- Styles -->
+  <style>
+    .entity { fill: #f5f5f5; stroke: #333; stroke-width: 2; }
+    .title { fill: #333; font-family: Arial; font-size: 16px; font-weight: bold; }
+    .attribute { fill: #333; font-family: Arial; font-size: 12px; }
+    .pk { font-weight: bold; }
+    .fk { font-style: italic; }
+    .relation { stroke: #333; stroke-width: 2; fill: none; }
+    .arrow { fill: #333; }
+  </style>
+
+  <!-- Expense Entity -->
+  <rect x="100" y="100" width="200" height="220" rx="5" ry="5" class="entity" />
+  <text x="200" y="125" text-anchor="middle" class="title">Expense</text>
+  <line x1="100" y1="135" x2="300" y2="135" stroke="#333" stroke-width="1" />
+  <text x="110" y="155" class="attribute pk">id (PK)</text>
+  <text x="110" y="175" class="attribute">protocol_number (UNIQUE)</text>
+  <text x="110" y="195" class="attribute">expense_type</text>
+  <text x="110" y="215" class="attribute">protocol_date</text>
+  <text x="110" y="235" class="attribute">due_date</text>
+  <text x="110" y="255" class="attribute">creditor</text>
+  <text x="110" y="275" class="attribute">description</text>
+  <text x="110" y="295" class="attribute">amount</text>
+  <text x="110" y="315" class="attribute">status (OPTIONAL)</text>
+
+  <!-- Commitment Entity -->
+  <rect x="500" y="100" width="200" height="160" rx="5" ry="5" class="entity" />
+  <text x="600" y="125" text-anchor="middle" class="title">Commitment</text>
+  <line x1="500" y1="135" x2="700" y2="135" stroke="#333" stroke-width="1" />
+  <text x="510" y="155" class="attribute pk">id (PK)</text>
+  <text x="510" y="175" class="attribute">commitment_number (UNIQUE)</text>
+  <text x="510" y="195" class="attribute">commitment_date</text>
+  <text x="510" y="215" class="attribute">amount</text>
+  <text x="510" y="235" class="attribute">note</text>
+  <text x="510" y="255" class="attribute fk">expense_id (FK)</text>
+
+  <!-- Payment Entity -->
+  <rect x="500" y="350" width="200" height="160" rx="5" ry="5" class="entity" />
+  <text x="600" y="375" text-anchor="middle" class="title">Payment</text>
+  <line x1="500" y1="385" x2="700" y2="385" stroke="#333" stroke-width="1" />
+  <text x="510" y="405" class="attribute pk">id (PK)</text>
+  <text x="510" y="425" class="attribute">payment_number (UNIQUE)</text>
+  <text x="510" y="445" class="attribute">payment_date</text>
+  <text x="510" y="465" class="attribute">amount</text>
+  <text x="510" y="485" class="attribute">note</text>
+  <text x="510" y="505" class="attribute fk">commitment_id (FK)</text>
+
+  <!-- Relationships -->
+  <!-- Expense to Commitment (1:N) -->
+  <path d="M 300 180 L 400 180 L 400 180 L 500 180" class="relation" />
+  <polygon points="490,175 500,180 490,185" class="arrow" />
+  <text x="350" y="170" text-anchor="middle" class="attribute">1</text>
+  <text x="450" y="170" text-anchor="middle" class="attribute">N</text>
+
+  <!-- Commitment to Payment (1:N) -->
+  <path d="M 600 260 L 600 300 L 600 300 L 600 350" class="relation" />
+  <polygon points="595,340 600,350 605,340" class="arrow" />
+  <text x="590" y="300" text-anchor="middle" class="attribute">1</text>
+  <text x="590" y="340" text-anchor="middle" class="attribute">N</text>
+
+  <!-- Business Rules -->
+  <rect x="100" y="450" width="300" height="120" rx="5" ry="5" fill="#e6f7ff" stroke="#333" stroke-width="1" />
+  <text x="250" y="470" text-anchor="middle" font-family="Arial" font-size="14" font-weight="bold">Business Rules</text>
+  <text x="110" y="490" font-family="Arial" font-size="12">1. Sum of commitment amounts ≤ expense amount</text>
+  <text x="110" y="510" font-family="Arial" font-size="12">2. Sum of payment amounts ≤ commitment amount</text>
+  <text x="110" y="530" font-family="Arial" font-size="12">3. Cannot delete commitment with payments</text>
+  <text x="110" y="550" font-family="Arial" font-size="12">4. Cannot delete expense with commitments</text>
+</svg>
